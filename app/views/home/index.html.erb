@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12 text-center">
+      <h1><%= image_tag("navbar/logo", alt: "Logo", style: "width: 50px; height: 50px;" ) %> KariPic</h1>
+      <p>Blog para compartir fotografías</p>
+    </div>
+  </div>
+
+  <div class="row py-5">
+    <div class="col-12 col-md-8 mx-auto">
+      <% @posts.each do |post| %>
+        <div class="card mb-4">
+          <div class="comments">
+            <% post.comments.each do |comment| %>
+              <div class="comment mb-3">
+                <%= comment.content %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="card">
+            <% if post.image.attached? %>
+              <div class="post-image">
+                <%= image_tag post.image %>
+              </div>
+            <% end %>
+
+
+
+  <!-- Mostrar la foto de perfil del usuario que realizó el post -->
+  <% if post.user.avatar.attached? %>
+    <div class="user-avatar" style="background-image: url('<%= url_for(post.user.avatar) %>');">
+    </div>
+  <% end %>
+</div>
+
+
+
+
+            <div class="card-body">
+              <%= render post %>
+
+
+
+            <div class="card-footer">
+              <!-- Botones de comentar y me gusta -->
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="row py-5">
+      <div class="col-12 text-center d-flex justify-content-center mt-1">
+        <%= link_to "Nueva publicación", new_post_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

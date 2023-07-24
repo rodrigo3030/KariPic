@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12 text-center">
+      <h1><%= image_tag("navbar/logo", alt: "Logo", style: "width: 50px; height: 50px;") %> KariPic</h1>
+      <p>Blog para compartir fotografías</p>
+    </div>
+  </div>
+
+  <div class="row py-5">
+    <div class="col-12 col-md-8 mx-auto">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2>Avatar Profile</h2>
+          <% if @user && @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class: "avatar-image" %>
+          <% else %>
+            <%= image_tag "default_avatar.jpg", class: "avatar-image" %>
+          <% end %>
+          <p><strong>Name:</strong> <%= @user.name %></p>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
